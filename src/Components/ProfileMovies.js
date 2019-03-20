@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import '../ProfileMovies.css'
 
 
-class ProfileImages extends Component {
+class ProfileMovies extends Component {
 
     // state = {
     //     user: []
@@ -30,8 +31,8 @@ class ProfileImages extends Component {
 
    
     return (
-       <div>
-         <p> ProfileImages</p>
+       <div className="myPhotos">
+         <p> ProfileMovies</p>
        </div>
 
 
@@ -40,5 +41,5 @@ class ProfileImages extends Component {
     }
   }
   
-  export default ProfileImages;
+  export default ProfileMovies;
   

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProfileCard from '../Components/ProfileCard'
-import ProfileImages from '../Components/ProfileImages'
+import ProfileMovies from '../Components/ProfileMovies'
 import ProfileMatches from '../Components/ProfileMatches'
 import '../ProfileContainer.css'
 
@@ -35,7 +35,7 @@ class ProfileContainer extends Component {
         return <div key={user.user.id} name={user.user.name}>
          <p>HI {user.user.username}</p>
          <ProfileCard user={user.user}/>
-         <ProfileImages user={user.user}/>
+         <ProfileMovies user={user.user}/>
          <ProfileMatches user={user.user}/>
 
         </div>
