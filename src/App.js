@@ -41,30 +41,9 @@ class App extends Component {
       }
       }
     )}
-    
-    // componentDidMount = () => {
-    //   console.log('app mount')
-    //   if (localStorage.getItem('token')){
-    //     alert("user logged in")
-    //     fetch("http://localhost:3000/api/v1/current_user",{
-    //         method: "GET",
-    //        headers: {"Authorization": localStorage.getItem("token")
-    //     }})
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.setState({
-    //           currentUser: data
-    //       });
-    //       console.log(this.state.currentUser)
-    //     })
   
-    // }else {
-    //   // this.login(token)
-    //   console.log("no user logged in")
-    // }
-    // }
   render() {
-    console.log('app render')
+    // console.log('app render')
     return (
       <div className="App">
      <Route path='/login' render={()=> <Login login={this.login}/>}/>
