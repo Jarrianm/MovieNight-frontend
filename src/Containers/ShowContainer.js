@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Shows from "../Components/Shows"
+import '../ShowContainer.css'
 
 class ShowContainer extends Component {
   
@@ -29,7 +30,7 @@ componentDidMount = (user) => {
       return <Shows key={show.id} show={show}/>
     })
     return (
-      <div className="App">
+      <div className="ShowContainer">
       
      {shows}
        

@@ -1,0 +1,18 @@
+.tile {
+    
+    border: 1px solid red;
+    background-color: black;
+    padding: 3%;
+    box-sizing: border-box;
+    transition: 1s transform;
+    -webkit-transition: 1s -webkit-transform;
+    transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+    /* backface-visibility: hidden;  */
+
+   } 
+
+   .tile:hover {
+    transform: scale(2);
+    -webkit-transform: scale(2);
+  } 
