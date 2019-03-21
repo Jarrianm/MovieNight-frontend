@@ -3,7 +3,7 @@ import ProfileCard from '../Components/ProfileCard'
 import ProfileMovies from '../Components/ProfileMovies'
 import ProfileMatches from '../Components/ProfileMatches'
 import '../ProfileContainer.css'
-
+import NavBar from "../Components/NavBar"
 class ProfileContainer extends Component {
 
     state = {
@@ -33,7 +33,7 @@ class ProfileContainer extends Component {
     let user = this.state.user.map((user) => {
         console.log(user)
         return <div key={user.user.id} name={user.user.name}>
-         <p>HI {user.user.username}</p>
+         <NavBar user={user.user}/>
          <ProfileCard user={user.user}/>
          <ProfileMovies user={user.user}/>
          <ProfileMatches user={user.user}/>
@@ -46,6 +46,7 @@ class ProfileContainer extends Component {
    
     return (
        <div>
+
            {user}
        </div>
 

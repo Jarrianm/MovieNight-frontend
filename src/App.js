@@ -4,6 +4,7 @@ import ShowContainer from "./Containers/ShowContainer"
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Login/Login'
 import ProfileContainter from './Containers/ProfileContainer'
+import ShowContainter from './Containers/ShowContainer'
 
 
 class App extends Component {
@@ -48,7 +49,8 @@ class App extends Component {
       <div className="App">
      <Route path='/login' render={()=> <Login login={this.login}/>}/>
       <Route path='/profile' render={(user) => (<ProfileContainter user={this.state.user}/>)}/>
-      
+      <Route path='/shows' render={(user) => (<ShowContainter user={this.state.user}/>)}/>
+
       </div>
     );
   }
