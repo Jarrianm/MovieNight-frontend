@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Login/Login'
 import ProfileContainter from './Containers/ProfileContainer'
 import ShowContainter from './Containers/ShowContainer'
+import NavBar from "./Components/NavBar"
 
 
 class App extends Component {
@@ -37,20 +38,41 @@ class App extends Component {
       // debugger
         this.props.history.push('/profile')
         this.setState({
+      
           user: user
         })
+        // console.log('login', this.state.user)
       }
       }
     )}
+
+    componentDidMount = (user) => {
+      console.log('app mount')
+      if (localStorage.getItem('token')){
+      //   alert("user logged in")
+        fetch("http://localhost:3000/api/v1/current_user",{
+            method: "GET",
+           headers: {"Authorization": localStorage.getItem("token")}})
+        .then(res => res.json())
+        .then(data => {
+          this.setState({currentUser: data })})
+  //else {
+  //     // this.login(token)
+  //     console.log("no user logged in")
+  //   }
+  }}
+ 
+   
   
   render() {
-    // console.log('app render')
+    console.log('app render', this.state.currentUser)
     return (
       <div className="App">
+      <NavBar user={this.state.currentUser}/>
      <Route path='/login' render={()=> <Login login={this.login}/>}/>
       <Route path='/profile' render={(user) => (<ProfileContainter user={this.state.user}/>)}/>
       <Route path='/shows' render={(user) => (<ShowContainter user={this.state.user}/>)}/>
-
+      
       </div>
     );
   }

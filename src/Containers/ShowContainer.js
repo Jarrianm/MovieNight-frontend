@@ -27,7 +27,10 @@ componentDidMount = (user) => {
   render() {
     console.log(this.state.shows)
     let shows = this.state.shows.map((show) => {
-      return <Shows key={show.id} show={show}/>
+      return  <Shows key={show.id} show={show}/>
+      {/* <img src="https://ya-webdesign.com/images/transparent-png-play-button.png" 
+      alt="play" class="playBtn"/>      
+      </div> */}
     })
     return (
       <div className="ShowContainer">

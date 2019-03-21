@@ -1,4 +1,4 @@
-.tile {
+.ShowCard{
     
     border: 1px solid red;
     background-color: black;
@@ -9,10 +9,32 @@
     transform-origin: 0% 0%;
     -webkit-transform-origin: 0% 0%;
     /* backface-visibility: hidden;  */
-
    } 
 
-   .tile:hover {
-    transform: scale(2);
-    -webkit-transform: scale(2);
+   .ShowCard:hover {
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
   } 
+
+  .Poster{
+    margin-left: auto;
+  margin-right: auto;
+  /* width: 50%; */
+}
+.playBtn{
+  position: relative;
+   width: 45%;
+   top: 45%;
+   left: 10%;
+  /* height: 45%; */
+  /* margin-left: 25%;  */
+  margin-left: auto;
+  margin-right: auto; 
+} 
+
+.FavButton{
+  
+}
+
+
+  
