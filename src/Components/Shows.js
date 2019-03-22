@@ -8,11 +8,12 @@ const Shows = (props) =>{
     
      
        <div className="ShowCard">
-       <img src="https://ya-webdesign.com/images/transparent-png-play-button.png" 
-      alt="play" className="playBtn"/> 
-      <button className ='FavButton'>Add to List</button> 
-       <img className="Poster"src={`http://image.tmdb.org/t/p/w500/${props.show.poster_img}`} alt=''/>
+       <div className="MovieTitle"><p>{props.show.title}</p></div>
+        <div><button className ='FavButton'>Add to List</button></div>
        
+       <div><img className="Poster"src={`http://image.tmdb.org/t/p/w500/${props.show.poster_img}`} alt=''/></div>
+        <div><span><img src="https://ya-webdesign.com/images/transparent-png-play-button.png" 
+      alt="play" className="playBtn"/></span></div>    
      </div> 
    
    
