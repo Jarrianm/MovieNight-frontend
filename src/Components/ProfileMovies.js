@@ -4,6 +4,7 @@ import '../ProfileMovies.css'
 
 class ProfileMovies extends Component {
 
+
     // state = {
     //     user: []
     // }
@@ -27,12 +28,12 @@ class ProfileMovies extends Component {
     
 
    render() { 
-
-
+      
    
     return (
        <div className="myPhotos">
-         <p> ProfileMovies</p>
+         <p>{this.props.user.username}'s List</p>
+         
        </div>
 
 
@@ -42,4 +43,3 @@ class ProfileMovies extends Component {
   }
   
   export default ProfileMovies;
-  

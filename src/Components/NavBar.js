@@ -24,6 +24,7 @@ class NavBar extends Component {
               <nav className='black'>
               <div className="logo toolbar_user-icon">
               </div>
+              
               <Link to={'/profile'}><p>Home</p></Link>
               <Link to={'/shows'}><p>Shows</p></Link>
               <Dropdown/>

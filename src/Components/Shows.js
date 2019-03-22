@@ -24,6 +24,3 @@ const Shows = (props) =>{
 
 export default Shows
 
-{/* <div className="showCard">
-       <img src={`http://image.tmdb.org/t/p/w500/${props.show.poster_img}`} alt=''/>
-     </div> */}
