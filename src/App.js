@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import ShowContainer from "./Containers/ShowContainer"
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Login/Login'
 import ProfileContainter from './Containers/ProfileContainer'

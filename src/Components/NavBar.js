@@ -26,7 +26,7 @@ class NavBar extends Component {
               </div>
               <Link to={'/profile'}><p>Home</p></Link>
               <Link to={'/shows'}><p>Shows</p></Link>
-
+              <Dropdown/>
               </nav>
             </div> 
                  

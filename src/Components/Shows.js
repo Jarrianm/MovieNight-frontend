@@ -3,7 +3,7 @@ import '../Shows.css'
 
 const Shows = (props) =>{
  
-  console.log(props.show.poster_img)
+  // console.log(props.show.poster_img)
    return (
     
      
@@ -12,8 +12,8 @@ const Shows = (props) =>{
         <div><button className ='FavButton'>Add to List</button></div>
        
        <div><img className="Poster"src={`http://image.tmdb.org/t/p/w500/${props.show.poster_img}`} alt=''/></div>
-        <div><span><img src="https://ya-webdesign.com/images/transparent-png-play-button.png" 
-      alt="play" className="playBtn"/></span></div>    
+        <img src="https://ya-webdesign.com/images/transparent-png-play-button.png" 
+          alt="play" className="playBtn"/>  
      </div> 
    
    
