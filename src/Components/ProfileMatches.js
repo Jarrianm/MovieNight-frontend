@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
 import '../ProfileMatches.css'
+import {Image, Divider} from "semantic-ui-react"
 
 class ProfileMatches extends Component {
 
-    // state = {
-    //     user: []
-    // }
+    state = {
+        match: []
+    }
 
-    // componentDidMount = (user) => {
-    //     console.log('profile mount')
-    //     if (localStorage.getItem('token')){
-    //     //   alert("user logged in")
-    //       fetch("http://localhost:3000/api/v1/current_user",{
-    //           method: "GET",
-    //          headers: {"Authorization": localStorage.getItem("token")}})
-    //       .then(res => res.json())
-    //       .then(data => {
-    //         this.setState({user: [data] })})
-    // //else {
-    // //     // this.login(token)
-    // //     console.log("no user logged in")
-    // //   }
-    // }}
-   
-    
+    componentDidMount = () => {
+    fetch("http://localhost:3000/api/v1/movies",{
+          method: "GET",
+         headers: {"Authorization": localStorage.getItem("token")}})
+      .then(res => res.json())
+      .then(movies => {
+        movies.map((movie ) => {this.setState({
+            match: movie.users})})})}
+
+            
 
    render() { 
 
-// console.log(this.props)
-   
+
+let filterMatch = this.state.match.filter ((match) => {
+      // console.log(match)
+      // console.log(this.props.user)
+       return  match.username !== this.props.user.username
+})
+  //  console.log(filterMatch)
+let matchedIMG = filterMatch.map((user)=> {
+  console.log(user)
+  return <div><Image size='small' src={user.profile_img} alt=''/>
+  <button onClick={this.clickProfileHandler}>{user.username}'s Profile</button>
+  <Divider/>
+  </div>
+})
+
     return (
        <div className="match">
          <p> ProfileMatches</p>
+            
+            {matchedIMG}
        </div>
 
 

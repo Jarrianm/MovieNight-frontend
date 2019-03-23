@@ -30,17 +30,17 @@ class ProfileContainer extends Component {
    render() { 
     // console.log('profile render',this.state.user)
     let user = this.state.user.map((user) => {
-        console.log(user.movies)
+        console.log(user)
         return <div key={user.user.id} name={user.user.name}>
         
          <ProfileCard user={user.user}/>
          <ProfileMovies user={user.user} movies={user.movies}/>
-         <ProfileMatches user={user.user}/>
+         <ProfileMatches user={user.user} />
          </div> })
 
-         let movies = this.state.user.movies.map((movie)=>{
-                    console.log(movie)
-         })
+        //  let movies = this.state..movies.map((movie)=>{
+        //             console.log(movie)
+        //  })
         
    
 
