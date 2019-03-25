@@ -9,9 +9,11 @@ class NavBar extends Component {
     this.props.history.push("/profile");
   };
   showsClickHandler = () => {
-    this.props.history.push("/shows");
+    // this.props.history.push("/shows");
   };
-
+  allMovies = (e) =>{
+    this.props.history.push('/shows')
+  }
   render() {
     // console.log(this.state.user)
     return (
@@ -23,7 +25,9 @@ class NavBar extends Component {
         
         <Dropdown item text='Shows'onClick={this.showsClickHandler}>
             <Dropdown.Menu>
-              <Dropdown.Item >TopRated</Dropdown.Item>
+            <Dropdown.Item onClick={this.allMovies}>All Movies</Dropdown.Item>
+
+              <Dropdown.Item  >TopRated</Dropdown.Item>
               <Dropdown.Item>Popular</Dropdown.Item>
               <Dropdown.Item>Coming Soon</Dropdown.Item>
             </Dropdown.Menu>
