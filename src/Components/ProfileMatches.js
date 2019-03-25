@@ -1,53 +1,65 @@
-import React, { Component } from 'react';
-import '../ProfileMatches.css'
-import {Image, Divider} from "semantic-ui-react"
+import React, { Component } from "react";
+import "../ProfileMatches.css";
+import { Image, Divider } from "semantic-ui-react";
+import ViewedProfilePageContainer from "../Containers/ViewedProfilePageContainer";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 class ProfileMatches extends Component {
+  state = {
+    match: []
+  };
 
-    state = {
-        match: []
-    }
-
-    componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/movies",{
-          method: "GET",
-         headers: {"Authorization": localStorage.getItem("token")}})
+  componentDidMount = () => {
+    fetch("http://localhost:3000/api/v1/movies", {
+      method: "GET",
+      headers: { Authorization: localStorage.getItem("token") }
+    })
       .then(res => res.json())
       .then(movies => {
-        movies.map((movie ) => {this.setState({
-            match: movie.users})})})}
+        movies.map(movie => {
+          this.setState({
+            match: movie.users
+          });
+        });
+      });
+  };
 
-            
+  clickProfileHandler = user => {
+    this.props.history.push("/login");
+    // console.log(user)
+    //getting user clicked from match
+    //then route to the users veiw version of their profile page
+    //then render theier profile with just their profile card and their movies
+  };
 
-   render() { 
-
-
-let filterMatch = this.state.match.filter ((match) => {
+  render() {
+    let filterMatch = this.state.match.filter(match => {
       // console.log(match)
       // console.log(this.props.user)
-       return  match.username !== this.props.user.username
-})
-  //  console.log(filterMatch)
-let matchedIMG = filterMatch.map((user)=> {
-  console.log(user)
-  return <div><Image size='small' src={user.profile_img} alt=''/>
-  <button onClick={this.clickProfileHandler}>{user.username}'s Profile</button>
-  <Divider/>
-  </div>
-})
+      return match.username !== this.props.user.username;
+    });
+    //  console.log(filterMatch)
+    let matchedIMG = filterMatch.map(user => {
+      console.log(user);
+      return (
+        <div key={user.id}>
+          <Image size="small" src={user.profile_img} alt="" avatar />
+          <button onClick={() => this.clickProfileHandler(user)}>
+            {user.username}'s Profile
+          </button>
+          <Divider />
+        </div>
+      );
+    });
 
     return (
-       <div className="match">
-         <p> ProfileMatches</p>
-            
-            {matchedIMG}
-       </div>
+      <div className="match">
+        <p> ProfileMatches</p>
 
-
-       
-      );
-    }
+        {matchedIMG}
+      </div>
+    );
   }
-  
-  export default ProfileMatches;
-  
+}
+
+export default withRouter(ProfileMatches);

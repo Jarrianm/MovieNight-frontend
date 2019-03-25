@@ -1,38 +1,29 @@
-import React, { Component } from 'react';
-import { withRouter} from 'react-router'
-import { Link } from 'react-router-dom'
-import Dropdown from './Dropdown'
-import '../NavBar.css'
+import React, { Component } from "react";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
+import { Menu, Segment } from "semantic-ui-react";
 
 class NavBar extends Component {
-//     state = {
-//       user: []
-//     }
-  
-//   componentDidMount =() =>{
-//   console.log('nav mount', this.props.user)
-//   if(this.props.user){
-// this.setState({
-//   user: this.props.user
-// })}
-//     }
+  homeClickHandler = () => {
+    this.props.history.push("/profile");
+  };
+  showsClickHandler = () => {
+    this.props.history.push("/shows");
+  };
 
-    render(){
-      // console.log(this.state.user)
-        return(
-            <div className='wrapper'>
-              <nav className='black'>
-              <div className="logo toolbar_user-icon">
-              </div>
-              
-              <Link to={'/profile'}><p>Home</p></Link>
-              <Link to={'/shows'}><p>Shows</p></Link>
-              <Dropdown/>
-              </nav>
-            </div> 
-                 
-        )
-    }
+  render() {
+    // console.log(this.state.user)
+    return (
+      <Segment inverted>
+        <Menu inverted pointing secondary>
+          <Menu.Item name="home" onClick={this.homeClickHandler} />
+          <Menu.Item name="Shows" onClick={this.showsClickHandler} />
+          <Menu.Item name="Settings" onClick={this.handleItemClick} />
+        </Menu>
+      </Segment>
+    );
+  }
 }
 
-export default withRouter(NavBar)
+export default withRouter(NavBar);
