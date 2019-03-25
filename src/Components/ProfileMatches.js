@@ -25,8 +25,8 @@ class ProfileMatches extends Component {
   };
 
   clickProfileHandler = user => {
-    this.props.history.push("/login");
-    // console.log(user)
+    // this.props.history.push("/login");
+    this.props.clickHandler(user)
     //getting user clicked from match
     //then route to the users veiw version of their profile page
     //then render theier profile with just their profile card and their movies
@@ -40,7 +40,7 @@ class ProfileMatches extends Component {
     });
     //  console.log(filterMatch)
     let matchedIMG = filterMatch.map(user => {
-      console.log(user);
+      // console.log(user);
       return (
         <div key={user.id}>
           <Image size="small" src={user.profile_img} alt="" avatar />

@@ -9,7 +9,7 @@ class ProfileContainer extends Component {
   };
 
   componentDidMount = user => {
-    console.log("profile mount");
+    // console.log("profile mount");
     if (localStorage.getItem("token")) {
       //   alert("user logged in")
       fetch("http://localhost:3000/api/v1/current_user", {
@@ -26,16 +26,19 @@ class ProfileContainer extends Component {
       //   }
     }
   };
+  clickHandler = (user) => {
+this.props.clickHandler(user)
+  }
 
   render() {
     // console.log('profile render',this.state.user)
     let user = this.state.user.map(user => {
-      console.log(user);
+      // console.log(user);
       return (
         <div key={user.user.id} name={user.user.name}>
           <ProfileCard user={user.user} />
           <ProfileMovies user={user.user} movies={user.movies} />
-          <ProfileMatches user={user.user} />
+          <ProfileMatches clickHandler={this.clickHandler} user={user.user} />
         </div>
       );
     });

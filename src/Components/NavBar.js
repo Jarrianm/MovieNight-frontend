@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown";
-import { Menu, Segment } from "semantic-ui-react";
+// import Dropdown from "./Dropdown";
+import { Menu, Segment, Button, Dropdown} from "semantic-ui-react";
 
 class NavBar extends Component {
   homeClickHandler = () => {
@@ -15,13 +15,33 @@ class NavBar extends Component {
   render() {
     // console.log(this.state.user)
     return (
+
+
       <Segment inverted>
-        <Menu inverted pointing secondary>
-          <Menu.Item name="home" onClick={this.homeClickHandler} />
-          <Menu.Item name="Shows" onClick={this.showsClickHandler} />
-          <Menu.Item name="Settings" onClick={this.handleItemClick} />
-        </Menu>
-      </Segment>
+        <Menu  inverted secondary size='large'>
+        <Menu.Item name='Home' onClick={this.homeClickHandler} />
+        
+        <Dropdown item text='Shows'onClick={this.showsClickHandler}>
+            <Dropdown.Menu>
+              <Dropdown.Item >TopRated</Dropdown.Item>
+              <Dropdown.Item>Popular</Dropdown.Item>
+              <Dropdown.Item>Coming Soon</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+        <Menu.Menu position='right'>
+          <Dropdown item text='Settings'>
+            <Dropdown.Menu>
+              <Dropdown.Item>Premium Account</Dropdown.Item>
+              <Dropdown.Item>Edit Profile</Dropdown.Item>
+              <Dropdown.Item>Log Out</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          
+        </Menu.Menu>
+      </Menu>
+      </Segment >
     );
   }
 }

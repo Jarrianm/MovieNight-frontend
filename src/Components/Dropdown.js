@@ -10,12 +10,11 @@ class DropDown extends Component {
 
   render() {
     return (
-      // <div></div>
       <Dropdown>
         <Dropdown.Menu>
-          <Dropdown.Item text="Settings" />
-          <Dropdown.Item text="Shows" onClick={this.handleClick} />
-          <Dropdown.Item text="LogOut" onClick={this.handleClick} />
+          <Dropdown.Item text="Top Rated" />
+          <Dropdown.Item text="Popular" onClick={this.handleClick} />
+          <Dropdown.Item text="Upcoming" onClick={this.handleClick} />
         </Dropdown.Menu>
       </Dropdown>
     );

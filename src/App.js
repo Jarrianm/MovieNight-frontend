@@ -5,6 +5,7 @@ import Login from './Login/Login'
 import ProfileContainter from './Containers/ProfileContainer'
 import ShowContainter from './Containers/ShowContainer'
 import NavBar from "./Components/NavBar"
+import ViewedProfilePageContainer from './Containers/ViewedProfilePageContainer';
 
 
 class App extends Component {
@@ -46,7 +47,7 @@ class App extends Component {
     )}
 
     componentDidMount = (user) => {
-      console.log('app mount')
+      // console.log('app mount')
       if (localStorage.getItem('token')){
       //   alert("user logged in")
         fetch("http://localhost:3000/api/v1/current_user",{
@@ -61,17 +62,22 @@ class App extends Component {
   //   }
   }}
  
+  clickHandler = (user) => {
+console.log(user.username)
+this.props.history.push(`/users/${user.username}` )
+  }
    
   
   render() {
-    console.log('app render', this.state.currentUser)
+    // console.log('app render', this.state.currentUser)
     return (
       <div className="App">
       <NavBar user={this.state.currentUser}/>
      <Route path='/login' render={()=> <Login login={this.login}/>}/>
-      <Route path='/profile' render={(user) => (<ProfileContainter user={this.state.user}/>)}/>
+      <Route path='/profile' render={(user) => (<ProfileContainter clickHandler={this.clickHandler}user={this.state.user}/>)}/>
       <Route path='/shows' render={(user) => (<ShowContainter user={this.state.user}/>)}/>
-      
+      <Route exact path='/users/:username' render={(user) => (<ViewedProfilePageContainer/>)}/>
+
       </div>
     );
   }
