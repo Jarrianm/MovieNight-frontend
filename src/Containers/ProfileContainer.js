@@ -26,9 +26,9 @@ class ProfileContainer extends Component {
       //   }
     }
   };
-  clickHandler = (user) => {
-this.props.clickHandler(user)
-  }
+  clickHandler = user => {
+    this.props.clickHandler(user);
+  };
 
   render() {
     // console.log('profile render',this.state.user)

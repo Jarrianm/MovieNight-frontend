@@ -64,23 +64,26 @@ class App extends Component {
   }}
  
   clickHandler = (user) => {
-console.log(user.username)
+console.log(user)
 this.props.history.push(`/users/${user.username}`)
 this.setState({
   clickedProfile: user
 })
+
+
   }
    
  
     render() {
-    // console.log('app render', this.state.currentUser)
+    console.log('app render', this.state.currentUser)
     return (
       <div className="App">
-      <NavBar clickHandler={this.category} user={this.state.currentUser}/>
+      <NavBar  user={this.state.currentUser}/>
      <Route path='/login' render={()=> <Login login={this.login}/>}/>
-      <Route path='/profile' render={(user) => (<ProfileContainter clickHandler={this.clickHandler}user={this.state.user}/>)}/>
-      <Route path='/shows' render={(user) => (<ShowContainter user={this.state.user}/>)}/>
-      
+      <Route path='/profile' render={(user) => (<ProfileContainter clickHandler={this.clickHandler} user={this.state.user}/>)}/>
+      <Route path='/shows' render={(user) => (<ShowContainter user={this.state.currentUser}/>)}/>
+      <Route exact path='/shows/topRated' render={(user) => (<ShowContainter user={this.state.currentUser}/>)}/>
+
       <Route exact path='/users/:username' render={(user) => (<ViewedProfilePageContainer user={this.state.clickedProfile} />)}/>
 
       </div>

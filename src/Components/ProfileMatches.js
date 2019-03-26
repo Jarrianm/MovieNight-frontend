@@ -26,7 +26,7 @@ class ProfileMatches extends Component {
 
   clickProfileHandler = user => {
     // this.props.history.push("/login");
-    this.props.clickHandler(user)
+    this.props.clickHandler(user);
     //getting user clicked from match
     //then route to the users veiw version of their profile page
     //then render theier profile with just their profile card and their movies

@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { Card, Icon, Image } from "semantic-ui-react";
 
 class ViewedProfleCard extends Component {
-    render() {
-        console.log(this.props)
-        return (
-            <Card>
-            <Image src={this.props.user.profile_img} />
-            <Card.Content>
-              <Card.Header>{this.props.user.name}</Card.Header>
-              <Card.Description>{this.props.user.bio}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <a>
-                <Icon name='film' />
-                10 Movies
-              </a>
-            </Card.Content>
-          </Card>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <div className="card">
+          <h1>{this.props.user.name}</h1>
+          <Image avatar size="large" src={this.props.user.profile_img} alt="" />
+          <p>Bio:{this.props.user.bio}</p>
+          <p>Age:{this.props.user.age}</p>
+          <p>Location:{this.props.user.location}</p>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ViewedProfleCard;

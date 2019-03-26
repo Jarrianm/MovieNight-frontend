@@ -19,28 +19,39 @@ class ShowContainer extends Component {
         .then(data => {
           this.setState({ shows: data });
         });
-      //else {
-      //     // this.login(token)
-      //     console.log("no user logged in")
-      //   }
     }
   };
-  clickHandler = show => {
-    console.log(show);
+  clickHandler = (show, user) => {
+    fetch("http://localhost:3000/api/v1/matchings", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ movie_id: show.id, user_id: user.id })
+    })
+      .then(res => res.json())
+      .then(console.log);
   };
 
   render() {
     console.log(this.state.shows);
-    let shows = this.state.shows.map(show => {
-      return (
-        <Shows clickHandler={this.clickHandler} key={show.id} show={show} />
-      );
-      {
-        /* <img src="https://ya-webdesign.com/images/transparent-png-play-button.png" 
-      alt="play" class="playBtn"/>      
-      </div> */
-      }
-    });
+    const user = this.props.user.user;
+    let shows = [];
+    if (user) {
+      shows = this.state.shows.map(show => {
+        return (
+          <Shows
+            clickHandler={() => {
+              this.clickHandler(show, user);
+            }}
+            key={show.id}
+            show={show}
+          />
+        );
+      });
+    }
+
     return <div className="ShowContainer">{shows}</div>;
   }
 }
