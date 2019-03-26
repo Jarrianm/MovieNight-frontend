@@ -43,9 +43,6 @@ class ProfileContainer extends Component {
       );
     });
 
-    //  let movies = this.state..movies.map((movie)=>{
-    //             console.log(movie)
-    //  })
 
     return <div>{user}</div>;
   }

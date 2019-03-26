@@ -3,26 +3,7 @@ import "../ProfileMovies.css";
 import { Divider, Image, Container } from "semantic-ui-react";
 
 class ProfileMovies extends Component {
-  // state = {
-  //     user: []
-  // }
-
-  // componentDidMount = (user) => {
-  //     console.log('profile mount')
-  //     if (localStorage.getItem('token')){
-  //     //   alert("user logged in")
-  //       fetch("http://localhost:3000/api/v1/current_user",{
-  //           method: "GET",
-  //          headers: {"Authorization": localStorage.getItem("token")}})
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         this.setState({user: [data] })})
-  // //else {
-  // //     // this.login(token)
-  // //     console.log("no user logged in")
-  // //   }
-  // }}
-
+ 
   render() {
     let movies = this.props.movies.map(movie => {
       return (
@@ -40,8 +21,7 @@ class ProfileMovies extends Component {
     return (
       <div className="myPhotos">
         <div>
-          {" "}
-          <h1>My List</h1>{" "}
+         <h1>My List</h1>
         </div>
         <Container>{movies}</Container>
       </div>

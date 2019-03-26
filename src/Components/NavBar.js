@@ -20,8 +20,14 @@ class NavBar extends Component {
     this.props.history.push("/login");
   };
   topRated = e => {
-    this.props.history.push("/shows/topRated");
+    this.props.history.push('shows/topRated');
   };
+  popular = (e) => {
+    this.props.history.push('shows/popular')
+  }
+  comingSoon = () =>{
+    this.props.history.push('shows/comingSoon')
+  }
   render() {
     // console.log(this.state.user)
     return (
@@ -34,8 +40,8 @@ class NavBar extends Component {
               <Dropdown.Item onClick={this.allMovies}>All Movies</Dropdown.Item>
 
               <Dropdown.Item onClick={this.topRated}>TopRated</Dropdown.Item>
-              <Dropdown.Item>Popular</Dropdown.Item>
-              <Dropdown.Item>Coming Soon</Dropdown.Item>
+              <Dropdown.Item onClick={this.popular}>Popular</Dropdown.Item>
+              <Dropdown.Item onClick={this.comingSoon}>Coming Soon</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 

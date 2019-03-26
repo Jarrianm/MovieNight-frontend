@@ -42,7 +42,7 @@ class ProfileMatches extends Component {
     let matchedIMG = filterMatch.map(user => {
       // console.log(user);
       return (
-        <div key={user.id}>
+        <div key={user.id} >
           <Image size="small" src={user.profile_img} alt="" avatar />
           <button onClick={() => this.clickProfileHandler(user)}>
             {user.username}'s Profile

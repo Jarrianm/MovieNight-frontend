@@ -39,17 +39,25 @@ class ShowContainer extends Component {
     const user = this.props.user.user;
     let shows = [];
     if (user) {
-      shows = this.state.shows.map(show => {
-        return (
-          <Shows
-            clickHandler={() => {
-              this.clickHandler(show, user);
-            }}
-            key={show.id}
-            show={show}
-          />
-        );
-      });
+      shows = this.state.shows
+        .filter(show => {
+          if (this.props.categoryFilter === "all") {
+            return true;
+          } else {
+            return show.category === this.props.categoryFilter;
+          }
+        })
+        .map(show => {
+          return (
+            <Shows
+              clickHandler={() => {
+                this.clickHandler(show, user);
+              }}
+              key={show.id}
+              show={show}
+            />
+          );
+        });
     }
 
     return <div className="ShowContainer">{shows}</div>;
