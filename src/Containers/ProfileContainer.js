@@ -18,7 +18,7 @@ class ProfileContainer extends Component {
       })
         .then(res => res.json())
         .then(data => {
-          this.setState({ user: [data] });
+          this.setState({ user: [data]});
         });
       //else {
       //     // this.login(token)
@@ -29,16 +29,40 @@ class ProfileContainer extends Component {
   clickHandler = user => {
     this.props.clickHandler(user);
   };
+  removeHandler = (movie) => {
+   console.log("user:", this.state.user[0], "movie:", movie)
+   let match = this.state.user[0].matchings.filter(matching =>{
+    return matching.user_id === this.state.user[0].user.id && matching.movie_id === movie.id
+   }).map((match) =>{
+    fetch(`http://localhost:3000/api/v1/matchings/${match.id}`,{
+      method: "DELETE",
+      headers: {"Content-type": "application/json",
+                  "Accept": "application/json"},
+      body: JSON.stringify({user_id: this.state.user[0].user.id, movie_id: movie.id})
+    })
+    .then(data => console.log(data))
+    
+   })
+   
+  // fetch(`http://localhost:3000/api/v1/matchings/${match.id}`,{
+  //   method: "DELETE",
+  //   headers: {"Content-type": "application/json",
+  //               "Accept": "application/json"},
+    // body: JSON.stringify({user_id: this.state.user[0].user.id, movie_id: movie.id})
+  // })
+  // .then(console.log)
+  
+  }
 
   render() {
     // console.log('profile render',this.state.user)
     let user = this.state.user.map(user => {
-      // console.log(user);
+      console.log(user);
       return (
         <div key={user.user.id} name={user.user.name}>
           <ProfileCard user={user.user} />
-          <ProfileMovies user={user.user} movies={user.movies} />
-          <ProfileMatches clickHandler={this.clickHandler} user={user.user} />
+          <ProfileMovies removeHandler={this.removeHandler}user={user.user} movies={user.movies} />
+          <ProfileMatches clickHandler={this.clickHandler} movies={user.movies} user={user.user} />
         </div>
       );
     });

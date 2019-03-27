@@ -79,12 +79,13 @@ this.setState({
       <div className="App">
       <NavBar  user={this.state.currentUser}/>
      <Route path='/login' render={()=> <Login login={this.login}/>}/>
-      <Route path='/profile' render={(user) => (<ProfileContainter clickHandler={this.clickHandler} user={this.state.user}/>)}/>
+      <Route path='/profile' render={(user) => (<ProfileContainter clickHandler={this.clickHandler} user={this.state.Currentuser}/>)}/>
+      <Route exact path='/shows' render={(user) => (<ShowContainter categoryFilter={'all'} user={this.state.currentUser}/>)}/>
       <Route exact path='/shows/topRated' render={(user) => (<ShowContainter categoryFilter={'top_rated'} user={this.state.currentUser}/>)}/>
       <Route exact path='/shows/popular' render={(user) => (<ShowContainter categoryFilter={'popular'} user={this.state.currentUser}/>)}/>
       <Route exact path='/shows/comingSoon' render={(user) => (<ShowContainter categoryFilter={'upcoming'} user={this.state.currentUser}/>)}/>
 
-      <Route exact path='/shows' render={(user) => (<ShowContainter categoryFilter={'all'} user={this.state.currentUser}/>)}/>
+      
       
 
       <Route exact path='/users/:username' render={(user) => (<ViewedProfilePageContainer user={this.state.clickedProfile} />)}/>

@@ -33,8 +33,9 @@ class ProfileMatches extends Component {
   };
 
   render() {
+    // console.log(this.props.movies)
     let filterMatch = this.state.match.filter(match => {
-      // console.log(match)
+      console.log(match)
       // console.log(this.props.user)
       return match.username !== this.props.user.username;
     });
