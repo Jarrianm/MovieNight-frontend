@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import reactDOM from "react-dom";
 import { withRouter } from "react-router-dom";
-
+import '../Login.css'
+import {Button,Form,Segment} from 'semantic-ui-react'
 class Login extends Component {
   state = {
     username: "",
@@ -22,24 +23,26 @@ class Login extends Component {
     // console.log('login page ')
     return (
       <div className="login">
-        <h2>Log In</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username</label>
-          <input
+       <div className="title"> <h1 >NETFLIX AND CHILL</h1></div>
+        <Segment inverted/>
+        <Form inverted onSubmit={this.handleSubmit}>
+        <Form.Group widths='equal'>
+          <Form.Input fluid label='Username'
             name="username"
-            placeholder="Username"
+            placeholder="username"
             value={this.state.username}
             onChange={this.handleChange}
           />
-          <label>Password</label>
-          <input
+          <Form.Input fluid label='Password'
             name="password"
-            placeholder="Password"
+            placeholder="password"
             value={this.state.password}
             onChange={this.handleChange}
-          />
-          <button className="submit-btn">Login</button>
-        </form>
+          />  </Form.Group>
+          <Button fluid className="submit-btn">Login</Button>
+        
+        </Form>
+        <Segment inverted/>
       </div>
     );
   }

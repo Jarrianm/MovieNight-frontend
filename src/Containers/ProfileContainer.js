@@ -26,11 +26,12 @@ class ProfileContainer extends Component {
       //   }
     }
   };
+
   clickHandler = user => {
     this.props.clickHandler(user);
   };
   removeHandler = (movie) => {
-   console.log("user:", this.state.user[0], "movie:", movie)
+  //  console.log("user:", this.state.user[0], "movie:", movie)
    let match = this.state.user[0].matchings.filter(matching =>{
     return matching.user_id === this.state.user[0].user.id && matching.movie_id === movie.id
    }).map((match) =>{
@@ -40,7 +41,7 @@ class ProfileContainer extends Component {
                   "Accept": "application/json"},
       body: JSON.stringify({user_id: this.state.user[0].user.id, movie_id: movie.id})
     })
-    .then(data => console.log(data))
+    .then(console.log)
     
    })
    
@@ -57,18 +58,20 @@ class ProfileContainer extends Component {
   render() {
     // console.log('profile render',this.state.user)
     let user = this.state.user.map(user => {
-      console.log(user);
+      // console.log(user.matchings);
       return (
         <div key={user.user.id} name={user.user.name}>
           <ProfileCard user={user.user} />
           <ProfileMovies removeHandler={this.removeHandler}user={user.user} movies={user.movies} />
-          <ProfileMatches clickHandler={this.clickHandler} movies={user.movies} user={user.user} />
+          <ProfileMatches clickHandler={this.clickHandler} matchings={user.matchings} user={user.user} />
         </div>
       );
     });
 
 
-    return <div>{user}</div>;
+    return <div>{user}
+   
+    </div>;
   }
 }
 

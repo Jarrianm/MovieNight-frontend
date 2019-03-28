@@ -9,6 +9,7 @@ this.props.removeHandler(movie)
 }
 
   render() {
+    // console.log(this.props.user)
     let movies = this.props.movies.map(movie => {
       return (
         <div key={movie.id} movie={movie}>

@@ -22,6 +22,7 @@ const Shows = props => {
           className="Poster"
           src={`http://image.tmdb.org/t/p/w500/${props.show.poster_img}`}
           alt=""
+
         />
       </div>
       <img

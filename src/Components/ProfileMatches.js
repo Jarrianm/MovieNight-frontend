@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../ProfileMatches.css";
-import { Image, Divider } from "semantic-ui-react";
+import { Image, Divider, Button,Icon} from "semantic-ui-react";
 import ViewedProfilePageContainer from "../Containers/ViewedProfilePageContainer";
 import { Route, Switch, withRouter } from "react-router-dom";
 
@@ -10,6 +10,7 @@ class ProfileMatches extends Component {
   };
 
   componentDidMount = () => {
+    console.log('match mount')
     fetch("http://localhost:3000/api/v1/movies", {
       method: "GET",
       headers: { Authorization: localStorage.getItem("token") }
@@ -32,32 +33,50 @@ class ProfileMatches extends Component {
     //then render theier profile with just their profile card and their movies
   };
 
+  
+
   render() {
-    // console.log(this.props.movies)
+
+    console.log(this.props.matchings)
+    // let match = this.props.matchings.map((matching) => {
+    //   console.log(matching.movie_id)
+    // })
+    // console.log(this.props.matchings)
+  // debugger;
     let filterMatch = this.state.match.filter(match => {
-      console.log(match)
-      // console.log(this.props.user)
+      // console.log(match)
+      console.log(this.props.matchings)
       return match.username !== this.props.user.username;
     });
-    //  console.log(filterMatch)
-    let matchedIMG = filterMatch.map(user => {
-      // console.log(user);
+    
+     
+    
+    let matchedIMG = filterMatch.map((user) => {
+      // console.log(user) ;
+     
       return (
         <div key={user.id} >
           <Image size="small" src={user.profile_img} alt="" avatar />
-          <button onClick={() => this.clickProfileHandler(user)}>
+          <Button onClick={() => this.clickProfileHandler(user)}>
             {user.username}'s Profile
-          </button>
+          </Button>
+          <Button animated>
+            <Button.Content visible>Chat</Button.Content>
+            <Button.Content hidden>
+              <Icon name="assistive listening systems" />
+            </Button.Content>
+          </Button>
           <Divider />
         </div>
       );
     });
-
+// not rendering users only rendering michael 
     return (
       <div className="match">
         <p> ProfileMatches</p>
-
+     
         {matchedIMG}
+       
       </div>
     );
   }

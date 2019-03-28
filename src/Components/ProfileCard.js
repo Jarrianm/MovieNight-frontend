@@ -3,7 +3,9 @@ import "../ProfileCard.css";
 import { Image } from "semantic-ui-react";
 
 class ProfileCard extends Component {
+
   render() {
+    // console.log(this.props.user)
     return (
       <div className="card">
         <h1>{this.props.user.name}</h1>
