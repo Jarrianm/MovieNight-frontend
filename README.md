@@ -1,6 +1,7 @@
 # Movie Night
 
-(Insert img)
+<img width="655" alt="MN-front" src="https://user-images.githubusercontent.com/42524503/133537478-bef84ae0-98bf-4672-9049-6e365355d0bd.png">
+
 
 
 # Motivation:
@@ -9,8 +10,6 @@ For a long time I’ve always noticed how much time couples and friends spend to
 This is a platform where users can talk and watch their favorite movies and tv shows together with their friends or new ones they make on the application!
 
 
-
-(Insert demo gif)
 
 
 # Technologies Used 
